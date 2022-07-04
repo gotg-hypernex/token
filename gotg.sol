@@ -358,7 +358,7 @@ contract GOTGToken is ERC20Token, Ownable,Pausable{
     /**
     * Freeze Account
     */
-    function freezeAccount(address account) onlyOwner public {
+    function freezeAccount(address account) onlyOwner external {
         frozenAccount[account] = true;
         emit FreezeAccount(account, true);
     }
@@ -367,7 +367,7 @@ contract GOTGToken is ERC20Token, Ownable,Pausable{
     /**
     * unFreeze Account
     */
-    function unFreezeAccount(address account) onlyOwner public{
+    function unFreezeAccount(address account) onlyOwner external{
         frozenAccount[account] = false;
         emit FreezeAccount(account, false);
     }
@@ -376,7 +376,7 @@ contract GOTGToken is ERC20Token, Ownable,Pausable{
     * lock Account, if account is locked, fund can only transfer in but not transfer out.
     * Can not unlockAccount, if need unlock account , pls call unlockAccount interface
      */
-    function lockAccount(address account, uint256 unlockTime) onlyOwner public{
+    function lockAccount(address account, uint256 unlockTime) onlyOwner external{
         require(unlockTime > now && unlockTime > lockedAccount[account] );
         lockedAccount[account] = unlockTime;
         emit LockAccount(account,unlockTime);
@@ -385,17 +385,17 @@ contract GOTGToken is ERC20Token, Ownable,Pausable{
    /**
     * unlock Account
      */
-    function unlockAccount(address account) onlyOwner public{
+    function unlockAccount(address account) onlyOwner external{
         lockedAccount[account] = 0;
         emit LockAccount(account,0);
     }
 
 
-    function changeName(string memory newName) public onlyOwner {
+    function changeName(string memory newName) external onlyOwner {
         name = newName;
     }
 
-    function changeSymbol(string memory newSymbol) public onlyOwner{
+    function changeSymbol(string memory newSymbol) external onlyOwner{
         symbol = newSymbol;
     }
 
