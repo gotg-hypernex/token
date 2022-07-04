@@ -377,7 +377,7 @@ contract GOTGToken is ERC20Token, Ownable,Pausable{
     * Can not unlockAccount, if need unlock account , pls call unlockAccount interface
      */
     function lockAccount(address account, uint256 unlockTime) onlyOwner public{
-        require(unlockTime > now);
+        require(unlockTime > now && unlockTime > lockedAccount[account] );
         lockedAccount[account] = unlockTime;
         emit LockAccount(account,unlockTime);
     }
