@@ -351,7 +351,7 @@ contract GOTGToken is ERC20Token, Ownable,Pausable{
 
     event LockAccount(address account,uint256 unlockTime);
 
-    constructor() ERC20Token(16000000000,"Got Guaranteed","GOTG") public {
+    constructor() ERC20Token(16 * 10 ** 9,"Got Guaranteed","GOTG") public {
     }
 
 
